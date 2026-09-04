@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSK Electronics — TV Repair &amp; Home Service, K Pudhur, Madurai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0C1B3A;
+    --navy-2:#132A54;
+    --navy-3:#1B3568;
+    --amber:#FFB800;
+    --amber-dim:#C98F00;
+    --red:#E4453A;
+    --red-dim:#C8362C;
+    --ink:#14213D;
+    --mute:#5B6478;
+    --line:#E4E7EE;
+    --bg:#F6F7FA;
+    --white:#FFFFFF;
+    --radius:12px;
+    --display:'Sora',sans-serif;
+    --body:'Inter',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px;}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}}
+
+  /* ===== TOPBAR ===== */
+  .topbar{background:var(--navy);color:#C7CEDD;font-size:13px;}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:42px;flex-wrap:wrap;}
+  .topbar-left,.topbar-right{display:flex;align-items:center;gap:22px;}
+  .topbar a.tlink{display:flex;align-items:center;gap:7px;transition:color .15s;}
+  .topbar a.tlink:hover{color:var(--amber);}
+  .topbar svg{width:14px;height:14px;flex-shrink:0;}
+  .soc{display:flex;gap:12px;}
+  .soc span{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;}
+  .soc svg{width:13px;height:13px;}
+
+  /* ===== MAIN NAV ===== */
+  header.mainnav{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60;}
+  .navrow{display:flex;align-items:center;justify-content:space-between;height:88px;gap:20px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-badge{
+    width:56px;height:56px;border-radius:12px;background:var(--white);
+    border:1.5px solid var(--line);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;
+  }
+  .brand-badge svg{width:30px;height:30px;stroke:var(--white);}
+  .brand-badge img{width:100%;height:100%;object-fit:cover;display:block;}
+  footer .brand-badge{background:var(--white);border-color:rgba(255,255,255,.14);}
+  .brand-text b{
+    font-family:var(--display);font-weight:800;font-size:22px;letter-spacing:.01em;color:var(--navy);
+    display:block;line-height:1.15;
+  }
+  .brand-text b em{font-style:normal;color:var(--red);}
+  .brand-text span{
+    display:block;font-size:10.5px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;margin-top:2px;font-weight:600;
+  }
+  .nav-links{display:flex;gap:30px;}
+  .nav-links a{font-size:13.5px;font-weight:600;color:var(--ink);letter-spacing:.02em;position:relative;padding-bottom:4px;transition:color .15s;}
+  .nav-links a:hover{color:var(--red);}
+  .nav-links a.active{color:var(--navy);}
+  .nav-links a.active::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--red);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 22px;border-radius:7px;font-weight:700;font-size:13.5px;letter-spacing:.03em;
+    cursor:pointer;border:1.5px solid transparent;transition:transform .12s ease, background .15s, border-color .15s, color .15s;
+    white-space:nowrap;
+  }
+  .btn:active{transform:scale(.97);}
+  .btn svg{width:15px;height:15px;flex-shrink:0;}
+  .btn-amber{background:var(--amber);color:#2B1B00;}
+  .btn-amber:hover{background:#FFC733;}
+  .btn-navy{background:var(--navy);color:var(--white);}
+  .btn-navy:hover{background:#173169;}
+  .btn-outline{background:transparent;border-color:rgba(255,255,255,.4);color:var(--white);}
+  .btn-outline:hover{border-color:var(--amber);color:var(--amber);}
+  .btn-outline-navy{background:transparent;border-color:var(--navy);color:var(--navy);}
+  .btn-outline-navy:hover{background:var(--navy);color:var(--white);}
+  .menu-toggle{display:none;background:none;border:1.5px solid var(--line);border-radius:7px;padding:9px 11px;color:var(--navy);}
+  .nav-book-mobile{display:none;}
+
+  /* ===== HERO ===== */
+  .hero{background:var(--navy);position:relative;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;min-height:640px;gap:40px;position:relative;z-index:2;}
+  .hero-dots{position:absolute;inset:0;opacity:.5;background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);background-size:22px 22px;pointer-events:none;}
+  .hero-glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,184,0,.14),transparent 70%);top:-120px;right:-80px;pointer-events:none;}
+  .kicker{
+    display:inline-flex;align-items:center;gap:9px;color:var(--amber);font-weight:700;font-size:13px;
+    letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px;
+  }
+  h1.headline{
+    font-family:var(--display);font-weight:800;color:var(--white);
+    font-size:clamp(34px,4.6vw,56px);line-height:1.04;letter-spacing:-.01em;margin-bottom:20px;
+  }
+  .hero p.lede{font-size:16.5px;color:#B8C0D4;max-width:46ch;margin-bottom:30px;}
+  .trust-icons{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:34px;}
+  .trust-icon{text-align:left;}
+  .trust-icon .circ{
+    width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(255,184,0,.5);
+    display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+  }
+  .trust-icon .circ svg{width:22px;height:22px;stroke:var(--amber);}
+  .trust-icon span{display:block;font-size:12.5px;color:#C7CEDD;font-weight:600;line-height:1.35;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+
+  .hero-art{position:relative;display:flex;align-items:center;justify-content:center;height:100%;}
+  .hero-art svg{width:100%;max-width:520px;height:auto;}
+  .float-bar{
+    position:absolute;left:0;right:0;bottom:-1px;
+    background:rgba(10,20,45,.92);backdrop-filter:blur(6px);
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;z-index:5;
+  }
+  .float-bar .fb-item{
+    flex:1;display:flex;align-items:center;gap:14px;padding:20px 28px;
+  }
+  .float-bar .fb-item + .fb-item{border-left:1px solid rgba(255,255,255,.1);}
+  .fb-icon{
+    width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .fb-icon svg{width:19px;height:19px;stroke:var(--amber);}
+  .fb-icon.wa svg{stroke:#2FD06E;}
+  .fb-item b{display:block;font-size:15px;color:var(--white);font-weight:700;}
+  .fb-item span{display:block;font-size:12px;color:#98A2BC;}
+
+  /* ===== SERVICES ===== */
+  .services{background:var(--bg);padding:90px 0 80px;}
+  .sec-head{text-align:center;max-width:640px;margin:0 auto 46px;}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:10px;}
+  .sec-head h2{
+    font-family:var(--display);font-weight:800;font-size:clamp(26px,3.2vw,36px);color:var(--navy);
+    letter-spacing:-.01em;position:relative;display:inline-block;padding-bottom:12px;
+  }
+  .sec-head h2 em{font-style:normal;position:relative;}
+  .sec-head h2 em::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--red);border-radius:2px;}
+  .sec-head p{color:var(--mute);font-size:15px;margin-top:14px;}
+
+  .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .svc-card{
+    background:var(--white);border:1.5px solid var(--line);border-radius:var(--radius);
+    padding:26px 20px 22px;text-align:center;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+  }
+  .svc-card:hover{transform:translateY(-4px);box-shadow:0 14px 28px rgba(12,27,58,.09);border-color:transparent;}
+  .svc-icon{
+    width:58px;height:58px;border-radius:50%;border:1.5px solid rgba(228,69,58,.35);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+  }
+  .svc-icon svg{width:26px;height:26px;stroke:var(--red);}
+  .svc-card h3{font-family:var(--display);font-weight:700;font-size:14.5px;color:var(--ink);margin-bottom:10px;line-height:1.3;}
+  .svc-enquire{
+    display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--navy);
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .svc-enquire svg{width:12px;height:12px;transition:transform .15s;}
+  .svc-card:hover .svc-enquire svg{transform:translateX(3px);}
+  .svc-more{text-align:center;margin-top:40px;}
+
+  /* ===== ABOUT ===== */
+  .about{padding:96px 0;background:var(--white);}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:center;}
+  .about-art{position:relative;}
+  .about-art svg{width:100%;height:auto;}
+  .about-badge{
+    position:absolute;bottom:-22px;right:-22px;background:var(--navy);color:var(--white);
+    border-radius:14px;padding:20px 24px;box-shadow:0 16px 32px rgba(12,27,58,.22);
+    text-align:center;
+  }
+  .about-badge b{font-family:var(--display);font-size:30px;font-weight:800;display:block;color:var(--amber);}
+  .about-badge span{font-size:11.5px;color:#B8C0D4;letter-spacing:.04em;text-transform:uppercase;font-weight:600;}
+  .about-copy .eyebrow{text-align:left;}
+  .about-copy h2{
+    font-family:var(--display);font-weight:800;font-size:clamp(26px,3vw,34px);color:var(--navy);
+    line-height:1.2;margin-bottom:20px;
+  }
+  .about-copy h2 em{font-style:normal;color:var(--red);}
+  .about-copy > p{color:var(--mute);font-size:15.5px;margin-bottom:16px;}
+  .about-copy > p strong{color:var(--ink);}
+  .about-points{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0;}
+  .about-point{display:flex;gap:12px;align-items:flex-start;}
+  .about-point .tick{
+    width:26px;height:26px;border-radius:50%;background:rgba(228,69,58,.1);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;margin-top:1px;
+  }
+  .about-point .tick svg{width:13px;height:13px;stroke:var(--red);}
+  .about-point b{display:block;font-size:14px;color:var(--ink);font-weight:700;}
+  .about-point span{font-size:12.5px;color:var(--mute);}
+
+  /* ===== WHY CHOOSE ===== */
+  .why{background:var(--navy);padding:96px 0;position:relative;overflow:hidden;}
+  .why .hero-dots{opacity:.35;}
+  .why .sec-head h2{color:var(--white);}
+  .why .sec-head p{color:#B8C0D4;}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;z-index:2;}
+  .why-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:28px 22px;}
+  .why-icon{
+    width:50px;height:50px;border-radius:12px;background:rgba(255,184,0,.14);
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .why-icon svg{width:24px;height:24px;stroke:var(--amber);}
+  .why-card h4{font-family:var(--display);font-weight:700;font-size:16.5px;color:var(--white);margin-bottom:8px;}
+  .why-card p{font-size:13.5px;color:#98A2BC;}
+
+  /* ===== REVIEWS ===== */
+  .reviews{padding:96px 0;background:var(--white);}
+  .rev-top{display:flex;align-items:center;justify-content:center;gap:24px;margin-bottom:44px;flex-wrap:wrap;}
+  .rev-score{
+    background:var(--navy);color:var(--white);border-radius:14px;padding:20px 26px;text-align:center;
+  }
+  .rev-score b{font-family:var(--display);font-size:40px;font-weight:800;color:var(--amber);display:block;}
+  .rev-score span{font-size:11.5px;color:#B8C0D4;text-transform:uppercase;letter-spacing:.06em;font-weight:600;}
+  .rev-stars{color:var(--amber);font-size:20px;letter-spacing:3px;}
+  .rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .rev-card{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:26px;}
+  .rev-card .rev-stars{font-size:14px;display:block;margin-bottom:14px;}
+  .rev-card p{font-size:14px;color:var(--mute);margin-bottom:18px;}
+  .rev-card .who{font-family:var(--display);font-weight:700;font-size:13px;color:var(--navy);}
+
+  /* ===== CONTACT ===== */
+  .contact{padding:96px 0;background:var(--bg);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:48px;}
+  .info-card{background:var(--navy);color:var(--white);border-radius:16px;padding:36px;}
+  .info-card h3{font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:22px;}
+  .info-row{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .info-row:last-of-type{border-bottom:none;}
+  .info-row .ic{
+    width:38px;height:38px;border-radius:50%;background:rgba(255,184,0,.14);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .info-row .ic svg{width:17px;height:17px;stroke:var(--amber);}
+  .info-row b{display:block;font-size:14px;font-weight:700;}
+  .info-row span{font-size:12.5px;color:#B8C0D4;}
+  .hours-mini{display:flex;justify-content:space-between;font-size:12.5px;padding:5px 0;color:#B8C0D4;}
+  .hours-mini b{color:var(--white);font-weight:600;}
+
+  .form-card{background:var(--white);border:1.5px solid var(--line);border-radius:16px;padding:36px;position:relative;}
+  .form-card h3{font-family:var(--display);font-weight:700;font-size:20px;color:var(--navy);margin-bottom:6px;}
+  .form-card > p{font-size:13.5px;color:var(--mute);margin-bottom:24px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:12px;font-weight:600;color:var(--mute);margin-bottom:6px;}
+  .field input,.field select,.field textarea{
+    width:100%;padding:12px 13px;border:1.5px solid var(--line);border-radius:8px;
+    background:var(--bg);font-family:var(--body);font-size:14px;color:var(--ink);
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,184,0,.18);}
+  .field textarea{resize:vertical;min-height:70px;}
+  .form-success{display:none;text-align:center;padding:36px 10px;}
+  .form-success.show{display:block;}
+  .form-success .ic{
+    width:48px;height:48px;border-radius:50%;background:rgba(47,208,110,.15);margin:0 auto 16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .form-success .ic svg{width:22px;height:22px;stroke:#2FD06E;}
+  .form-success h4{font-family:var(--display);font-weight:700;font-size:17px;color:var(--navy);margin-bottom:6px;}
+  .form-success p{font-size:13.5px;color:var(--mute);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);color:#98A2BC;padding-top:70px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1.1fr;gap:40px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.08);}
+  .foot-brand .brand{margin-bottom:16px;}
+  .foot-brand p{font-size:13.5px;line-height:1.7;color:#8891AA;}
+  footer h5{font-family:var(--display);font-weight:700;color:var(--white);font-size:14.5px;margin-bottom:18px;}
+  footer .fl a{display:block;font-size:13.5px;padding:6px 0;color:#98A2BC;transition:color .15s;}
+  footer .fl a:hover{color:var(--amber);}
+  .foot-bottom{display:flex;justify-content:space-between;padding:24px 0;font-size:12.5px;flex-wrap:wrap;gap:10px;}
+
+  /* ===== MOBILE ===== */
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .menu-toggle{display:inline-flex;}
+    .navrow{gap:10px;}
+    .navrow > a.btn-navy{display:none;}
+    .nav-book-mobile{
+      display:block;margin-top:10px;text-align:center;background:var(--navy);color:var(--white)!important;
+      padding:12px;border-radius:7px;font-weight:700;
+    }
+    .hero-grid{grid-template-columns:1fr;min-height:auto;padding-top:36px;}
+    .hero-art{order:-1;padding:20px 0 0;}
+    .float-bar{position:static;flex-direction:column;border-radius:14px;margin-top:24px;}
+    .float-bar .fb-item + .fb-item{border-left:none;border-top:1px solid rgba(255,255,255,.1);}
+    .svc-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid{grid-template-columns:1fr;gap:60px;}
+    .about-badge{right:12px;}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .rev-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:600px){
+    .topbar .topbar-right .soc{display:none;}
+    .svc-grid{grid-template-columns:1fr 1fr;}
+    .trust-icons{gap:16px;}
+    .trust-icon{width:calc(33% - 12px);}
+    .field-row{grid-template-columns:1fr;}
+    .brand-badge{width:46px;height:46px;border-radius:10px;}
+    .brand-text b{font-size:18px;}
+    .brand-text span{font-size:9px;letter-spacing:.1em;}
+  }
+
+  /* ===== OWNER TAG ===== */
+  .owner-tag{
+    display:inline-flex;align-items:center;gap:14px;
+    margin:14px 0 20px;padding:12px 18px;
+    background:var(--bg);border:1.5px solid var(--line);
+    border-left:4px solid var(--amber);border-radius:10px;
+  }
+  .owner-avatar{
+    width:42px;height:42px;border-radius:50%;background:var(--navy);color:var(--amber);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;
+    font-family:var(--display);flex-shrink:0;
+  }
+  .owner-tag b{display:block;font-size:15px;color:var(--navy);font-family:var(--display);line-height:1.2;}
+  .owner-tag span{display:block;font-size:12px;color:var(--mute);font-weight:600;margin-top:2px;}
+
+  /* ===== MULTI-IMAGE SHOP GALLERY ===== */
+  .shop-photo-sec{padding:84px 0;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .shop-gallery-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+    max-width:1100px;margin:0 auto;
+  }
+  .shop-img-card{
+    border-radius:18px;overflow:hidden;
+    border:1.5px solid var(--line);background:var(--navy);
+    box-shadow:0 12px 28px rgba(12,27,58,.09);position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+    height:280px;
+  }
+  .shop-img-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(12,27,58,.16);}
+  .shop-img-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+  .shop-img-card:hover img{transform:scale(1.03);}
+  .shop-card-caption{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:20px;
+    background:linear-gradient(to top, rgba(12,27,58,.92) 0%, rgba(12,27,58,.5) 70%, transparent 100%);
+    color:var(--white);z-index:2;
+  }
+  .shop-card-caption b{display:block;font-size:15px;font-family:var(--display);font-weight:700;line-height:1.2;}
+  .shop-card-caption span{display:block;font-size:12px;color:var(--amber);font-weight:600;margin-top:3px;}
+  @media (max-width:768px){
+    .shop-gallery-grid{grid-template-columns:1fr;gap:18px;}
+    .shop-img-card{height:240px;}
+  }
+
+  /* ===== LOCATION SECTION ===== */
+  .location-sec{padding:84px 0;background:var(--white);}
+  .loc-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+    background:var(--bg);border:1.5px solid var(--line);border-radius:20px;
+    padding:40px;box-shadow:0 10px 24px rgba(12,27,58,.04);
+  }
+  .loc-info h3{font-family:var(--display);font-weight:800;font-size:24px;color:var(--navy);margin-bottom:4px;}
+  .loc-owner{font-size:14px;font-weight:700;color:var(--red);margin-bottom:16px;display:block;}
+  .loc-address{font-size:14px;color:var(--ink);line-height:1.65;margin-bottom:24px;}
+  .loc-map-frame{
+    border-radius:18px;overflow:hidden;
+    width:100%;max-width:400px;margin:0 auto;
+    aspect-ratio:1 / 1;
+    border:1.5px solid var(--line);box-shadow:0 8px 24px rgba(12,27,58,.08);
+  }
+  @media (max-width:860px){
+    .loc-card{grid-template-columns:1fr;gap:28px;padding:26px;}
+    .loc-map-frame{max-width:100%;aspect-ratio:1 / 1;}
+  }
+
+  /* ===== HOW IT WORKS / ROADMAP ===== */
+  .roadmap{background:var(--navy);padding:96px 0 104px;position:relative;overflow:hidden;}
+  .roadmap .hero-dots{opacity:.35;}
+  .roadmap .sec-head h2{color:var(--white);}
+  .roadmap .sec-head p{color:#B8C0D4;}
+  .roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;position:relative;z-index:2;margin-top:56px;}
+  .roadmap-line{position:absolute;top:32px;left:12%;right:12%;height:3px;background:linear-gradient(90deg,rgba(255,184,0,.15),var(--amber) 15%,var(--amber) 85%,rgba(255,184,0,.15));z-index:1;}
+  .rm-step{position:relative;text-align:center;padding:0 6px;}
+  .rm-num-wrap{position:relative;width:64px;height:64px;margin:0 auto 22px;}
+  .rm-step .rm-num{
+    width:64px;height:64px;border-radius:50%;background:var(--navy-2);
+    border:3px solid var(--amber);display:flex;align-items:center;justify-content:center;
+    position:relative;z-index:3;box-shadow:0 0 0 6px rgba(255,184,0,.09);
+  }
+  .rm-step .rm-num svg{width:25px;height:25px;stroke:var(--amber);}
+  .rm-step .rm-tag{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--red);color:#fff;font-size:10.5px;font-weight:800;
+    padding:3px 11px;border-radius:20px;letter-spacing:.05em;z-index:4;white-space:nowrap;
+  }
+  .rm-step h4{font-family:var(--display);font-weight:700;font-size:16.5px;color:var(--white);margin-bottom:9px;}
+  .rm-step p{font-size:13px;color:#98A2BC;max-width:230px;margin:0 auto;}
+  @media (max-width:900px){
+    .roadmap-line{display:none;}
+    .roadmap-grid{grid-template-columns:1fr;gap:38px;max-width:360px;margin-left:auto;margin-right:auto;}
+  }
+
+  /* ===== BRANDS SCROLL CAROUSEL ===== */
+  .brands{padding:80px 0;background:var(--bg);}
+  .brands-scroll-wrap{position:relative;}
+  .brands-track{
+    display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;
+    padding:6px 4px 16px;scrollbar-width:none;-ms-overflow-style:none;
+  }
+  .brands-track::-webkit-scrollbar{display:none;}
+  .brand-logo-card{
+    flex:0 0 auto;width:172px;height:92px;background:var(--white);
+    border:1.5px solid var(--line);border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px rgba(12,27,58,.05);
+    transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .brand-logo-card:hover{transform:translateY(-5px);box-shadow:0 14px 30px rgba(12,27,58,.13);border-color:transparent;}
+  .brand-logo-card b{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.01em;}
+  .brands-nav{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:8px;}
+  .brands-nav button{
+    width:42px;height:42px;border-radius:50%;border:1.5px solid var(--line);background:var(--white);
+    display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--navy);transition:all .15s;flex-shrink:0;
+  }
+  .brands-nav button:hover{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .brands-nav button svg{width:16px;height:16px;stroke:currentColor;}
+  .brands-nav .bn-flip{transform:scaleX(-1);}
+  .brands-hint{font-size:12px;color:var(--mute);letter-spacing:.03em;}
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ===== FLOATING ACTIONS ===== */
+  .floating-actions{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;flex-direction:column;gap:14px;align-items:flex-end;}
+  .fab{width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(12,27,58,.28);cursor:pointer;transition:transform .15s ease;border:none;}
+  .fab:hover{transform:translateY(-3px) scale(1.05);}
+  .fab-wa{background:#25D366;}
+  .fab-wa svg{width:27px;height:27px;stroke:#fff;}
+  .fab-top{background:var(--navy);width:44px;height:44px;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity .25s ease, transform .25s ease;}
+  .fab-top.show{opacity:1;pointer-events:auto;transform:translateY(0);}
+  .fab-top svg{width:18px;height:18px;stroke:#fff;}
+  @media (max-width:600px){
+    .floating-actions{right:16px;bottom:16px;}
+  }
+
+  /* ===== REVIEW MODAL & STAR PICKER ===== */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(12,27,58,.8);backdrop-filter:blur(6px);
+    z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;
+    opacity:0;pointer-events:none;transition:opacity .25s ease;
+  }
+  .modal-overlay.active{opacity:1;pointer-events:auto;}
+  .modal-card{
+    background:var(--white);border-radius:20px;max-width:480px;width:100%;
+    padding:32px;position:relative;box-shadow:0 20px 48px rgba(12,27,58,.3);
+    transform:scale(.92);transition:transform .25s ease;
+  }
+  .modal-overlay.active .modal-card{transform:scale(1);}
+  .modal-close{
+    position:absolute;top:16px;right:16px;background:var(--bg);border:1px solid var(--line);
+    width:34px;height:34px;border-radius:50%;font-size:20px;line-height:1;display:flex;align-items:center;
+    justify-content:center;cursor:pointer;color:var(--navy);transition:all .15s;
+  }
+  .modal-close:hover{background:var(--red);color:#fff;border-color:var(--red);}
+  .modal-head{text-align:center;margin-bottom:22px;}
+  .modal-icon{
+    width:48px;height:48px;border-radius:50%;background:rgba(255,184,0,.15);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 10px;
+  }
+  .modal-head h3{font-family:var(--display);font-weight:800;font-size:20px;color:var(--navy);}
+  .modal-head p{font-size:13px;color:var(--mute);margin-top:3px;}
+  .star-picker{display:flex;gap:8px;font-size:28px;cursor:pointer;color:#D0D5E0;user-select:none;margin-top:4px;}
+  .star-picker span{transition:color .15s, transform .15s;}
+  .star-picker span:hover, .star-picker span.active{color:var(--amber);transform:scale(1.18);}
+  .rev-badge{
+    background:var(--amber);color:#2B1B00;font-size:10px;font-weight:800;
+    padding:2px 8px;border-radius:10px;margin-left:8px;letter-spacing:.04em;
+    text-transform:uppercase;display:inline-block;vertical-align:middle;
+  }
+</style>
+
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></symbol>
+  <symbol id="ic-wa" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 11-14.6-4.6L4 20l4.8-1.3A8 8 0 0020 12z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+  <symbol id="ic-fb" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9h3V6h-3a3 3 0 00-3 3v3H8v3h3v6h3v-6h3l1-3h-4V9a1 1 0 011-1z"/></symbol>
+  <symbol id="ic-ig" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></symbol>
+  <symbol id="ic-yt" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 10l4 2-4 2z" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11l8-6 8 6"/><path d="M6 10v9h12v-9"/></symbol>
+  <symbol id="ic-badge" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5"/><path d="M9 13l-1.5 7L12 18l4.5 2L15 13"/><path d="M9.5 9l1.8 1.8L14.5 7.2"/></symbol>
+  <symbol id="ic-clock2" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 8v4l3 2"/></symbol>
+  <symbol id="ic-medal" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4.5"/><path d="M8.5 12l-2 8 5.5-2.5L17.5 20l-2-8"/></symbol>
+  <symbol id="ic-rupee" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 8h8M8 11h8M8 8c3 0 5 1.3 5 3s-2 3-5 3l6 5"/></symbol>
+  <symbol id="ic-arrow" viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></symbol>
+  <symbol id="ic-flicker" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M3 9l4 3-2 2 5-1-1 3"/><path d="M8 21h8"/></symbol>
+  <symbol id="ic-remote" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="20" rx="3"/><circle cx="12" cy="7" r="1.3"/><path d="M10 12h4M10 16h4"/></symbol>
+  <symbol id="ic-hdmi" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="7" rx="1.5"/><path d="M8 9V6h8v3"/></symbol>
+  <symbol id="ic-lines" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M6 9h12M6 13h8"/></symbol>
+  <symbol id="ic-backlight" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="11" rx="1.5"/><path d="M2 3l2 2M22 3l-2 2M2 21l2-2M22 21l-2-2"/></symbol>
+  <symbol id="ic-half" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M12 5v14" stroke-dasharray="2 2"/></symbol>
+  <symbol id="ic-net" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 010 18M12 3a15 15 0 000 18"/></symbol>
+  <symbol id="ic-power" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v8"/><path d="M6.5 6.5a8 8 0 1011 0"/></symbol>
+  <symbol id="ic-wifi" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9a15 15 0 0118 0"/><path d="M6.5 13a9 9 0 0111 0"/><path d="M10 17a3.5 3.5 0 014 0"/><circle cx="12" cy="20" r="0.6" fill="currentColor"/></symbol>
+  <symbol id="ic-blur" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="10" r="4"/><circle cx="15" cy="14" r="4" opacity=".5"/></symbol>
+  <symbol id="ic-chip" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1.5"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/></symbol>
+  <symbol id="ic-picture" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.4"/><path d="M4 17l5-5 4 4 3-3 4 4"/></symbol>
+  <symbol id="ic-software" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v2M12 19v2M4.2 4.2l1.5 1.5M18.3 18.3l1.5 1.5M3 12h2M19 12h2M4.2 19.8l1.5-1.5M18.3 5.7l1.5-1.5"/></symbol>
+  <symbol id="ic-glass" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></symbol>
+  <symbol id="ic-spot" viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.1" fill="currentColor"/><circle cx="15" cy="14" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="ic-tv" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></symbol>
+  <symbol id="ic-tool" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 01-5.6 5.6L4 17l3 3 5.1-5.1a4 4 0 015.6-5.6l-3 3-2-2z"/></symbol>
+  <symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></symbol>
+</svg>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-left">
+      <a href="tel:+919944975893" class="tlink"><svg><use href="#ic-phone"/></svg>+91 9944975893</a>
+      <a href="https://wa.me/919944975893?text=Hi%20KSK%20Electronics%2C%20I%20have%20an%20enquiry%20regarding%20TV%20repair" target="_blank" rel="noopener noreferrer" class="tlink"><svg><use href="#ic-wa"/></svg>WhatsApp Us</a>
+    </div>
+    <div class="topbar-right">
+      <span class="tlink"><svg><use href="#ic-clock"/></svg>Open Daily · 10:00 AM – 9:00 PM</span>
+      <div class="soc" aria-hidden="true">
+        <span><svg style="stroke:#C7CEDD"><use href="#ic-fb"/></svg></span>
+        <span><svg style="stroke:#C7CEDD"><use href="#ic-ig"/></svg></span>
+        <span><svg style="stroke:#C7CEDD"><use href="#ic-yt"/></svg></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<header class="mainnav">
+  <div class="wrap navrow">
+    <div class="brand">
+      <div class="brand-badge"><img src="ksk-logo.png" alt="KSK Electronics logo"></div>
+      <span class="brand-text"><b>KSK <em>ELECTRONICS</em></b><span>TV Repair &amp; Home Service</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#home" class="active">Home</a>
+      <a href="#process">Our Process</a>
+      <a href="#about">About Us</a>
+      <a href="#services">Our Services</a>
+      <a href="#brands">Brands</a>
+      <a href="#why">Why Choose Us</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact Us</a>
+      <a href="#contact" class="nav-book-mobile">Book a Service</a>
+    </nav>
+    <a href="#contact" class="btn btn-navy">Book a Service</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-dots"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">TV Problems?</span>
+      <h1 class="headline">We come<br>to <em style="color:var(--amber)">your door</em></h1>
+      <p class="lede">Professional TV repair and home service in K Pudhur, Madurai — flickering screens, dead backlights, no signal, no power. Tell us the issue, we'll send a technician.</p>
+      <div class="trust-icons">
+        <div class="trust-icon"><div class="circ"><svg><use href="#ic-home"/></svg></div><span>Home<br>Service</span></div>
+        <div class="trust-icon"><div class="circ"><svg><use href="#ic-badge"/></svg></div><span>Experienced<br>Technicians</span></div>
+        <div class="trust-icon"><div class="circ"><svg><use href="#ic-clock2"/></svg></div><span>Quick<br>Response</span></div>
+        <div class="trust-icon"><div class="circ"><svg><use href="#ic-medal"/></svg></div><span>Quality<br>Service</span></div>
+        <div class="trust-icon"><div class="circ"><svg><use href="#ic-rupee"/></svg></div><span>Transparent<br>Pricing</span></div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-amber"><svg><use href="#ic-clock"/></svg>Book a Service</a>
+        <a href="#contact" class="btn btn-outline"><svg><use href="#ic-phone"/></svg>Enquire Now</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 520 480" role="img" aria-label="Illustration of a KSK Electronics technician repairing the back panel of a television">
+        <circle cx="330" cy="190" r="175" fill="#132A54"/>
+        <circle cx="330" cy="190" r="175" fill="none" stroke="#1B3568" stroke-width="1"/>
+        <g opacity=".5">
+          <circle cx="120" cy="90" r="3" fill="#FFB800"/>
+          <circle cx="470" cy="120" r="3" fill="#FFB800"/>
+          <circle cx="90" cy="330" r="3" fill="#E4453A"/>
+          <circle cx="460" cy="360" r="3" fill="#E4453A"/>
+        </g>
+        <rect x="70" y="70" width="270" height="185" rx="10" fill="#0C1B3A" stroke="#2A4478" stroke-width="2"/>
+        <rect x="86" y="86" width="130" height="153" rx="4" fill="#1B3568"/>
+        <rect x="96" y="96" width="46" height="10" rx="2" fill="#2A4478"/>
+        <rect x="96" y="112" width="70" height="4" rx="2" fill="#2A4478"/>
+        <rect x="96" y="122" width="60" height="4" rx="2" fill="#2A4478"/>
+        <circle cx="185" cy="150" r="20" fill="#0C1B3A" stroke="#FFB800" stroke-width="2"/>
+        <path d="M177 150h16M185 142v16" stroke="#FFB800" stroke-width="2"/>
+        <rect x="96" y="185" width="20" height="20" rx="3" fill="#E4453A" opacity=".85"/>
+        <rect x="122" y="185" width="20" height="20" rx="3" fill="#2A4478"/>
+        <rect x="148" y="185" width="20" height="20" rx="3" fill="#2A4478"/>
+        <path d="M96 220h100M96 228h70" stroke="#2A4478" stroke-width="3" stroke-linecap="round"/>
+        <rect x="150" y="255" width="80" height="8" rx="4" fill="#0C1B3A"/>
+        <rect x="180" y="263" width="20" height="30" fill="#0C1B3A"/>
+        <g>
+          <path d="M245 300c10-45 45-78 88-88l14 24c-38 8-66 34-74 70z" fill="#FFB800"/>
+          <circle cx="352" cy="212" r="26" fill="#F0B27A"/>
+          <path d="M330 195c4-14 18-22 30-18 10 3 15 12 14 22-10-4-16-2-20 4-8-8-18-10-24-8z" fill="#1B3568"/>
+          <path d="M300 400c4-52 22-92 44-108 16-12 34-14 46-6 14 60 8 96-6 118-16 10-56 6-84-4z" fill="#1B3568"/>
+          <path d="M330 285c14-8 34-8 50 2l18 30-26 18-30-24z" fill="#132A54"/>
+          <path d="M356 300l30 14-8 20-30-10z" fill="#F0B27A"/>
+          <rect x="374" y="312" width="34" height="7" rx="3.5" fill="#FFB800" transform="rotate(28 374 312)"/>
+          <circle cx="410" cy="325" r="4" fill="#E4453A"/>
+        </g>
+        <rect x="16" y="380" width="488" height="4" fill="#1B3568"/>
+        <rect x="0" y="384" width="520" height="96" fill="#0A1730"/>
+      </svg>
+      <div class="float-bar">
+        <a href="tel:+919944975893" class="fb-item">
+          <div class="fb-icon"><svg><use href="#ic-phone"/></svg></div>
+          <div><b>Need Help? Call Us</b><span>+91 9944975893</span></div>
+        </a>
+        <a href="https://wa.me/919944975893?text=Hi%20KSK%20Electronics%2C%20I%20have%20an%20enquiry%20regarding%20TV%20repair" target="_blank" rel="noopener noreferrer" class="fb-item">
+          <div class="fb-icon wa"><svg><use href="#ic-wa"/></svg></div>
+          <div><b>Chat on WhatsApp</b><span>Quick reply, same day</span></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roadmap" id="process">
+  <div class="hero-dots"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--amber)">How It Works</span>
+      <h2>No Pickup, No Waiting — <em style="color:var(--amber)">We Come to You</em></h2>
+      <p>No need to unplug your TV or carry it anywhere. Our technician reaches your home and fixes it right in front of you.</p>
+    </div>
+    <div class="roadmap-grid">
+      <div class="roadmap-line"></div>
+      <div class="rm-step reveal">
+        <span class="rm-tag">Step 1</span>
+        <div class="rm-num-wrap"><div class="rm-num"><svg><use href="#ic-phone"/></svg></div></div>
+        <h4>You Call / WhatsApp Us</h4>
+        <p>Tell us your TV problem and address over a quick call or WhatsApp message — takes less than a minute.</p>
+      </div>
+      <div class="rm-step reveal">
+        <span class="rm-tag">Step 2</span>
+        <div class="rm-num-wrap"><div class="rm-num"><svg><use href="#ic-home"/></svg></div></div>
+        <h4>We Visit Your Home</h4>
+        <p>A technician reaches your doorstep at the confirmed time, fully equipped with tools and common spare parts.</p>
+      </div>
+      <div class="rm-step reveal">
+        <span class="rm-tag">Step 3</span>
+        <div class="rm-num-wrap"><div class="rm-num"><svg><use href="#ic-tool"/></svg></div></div>
+        <h4>On-the-Spot Repair</h4>
+        <p>We diagnose and fix the issue right there in front of you — transparent pricing, no separate visits, no delays.</p>
+      </div>
+      <div class="rm-step reveal">
+        <span class="rm-tag">Step 4</span>
+        <div class="rm-num-wrap"><div class="rm-num"><svg><use href="#ic-badge"/></svg></div></div>
+        <h4>Happy Customer, Every Time</h4>
+        <p>Your TV works like new before we leave — we don't consider the job done until you're satisfied.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Our Service</span>
+      <h2>We Repair <em>All Types</em> of TVs</h2>
+      <p>Pick the issue closest to yours and enquire — a technician will confirm the fix and cost before any work begins.</p>
+    </div>
+    <div class="svc-grid" id="svcGrid"></div>
+    <div class="svc-more"><a href="#contact" class="btn btn-navy">View All Services</a></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-art">
+      <svg viewBox="0 0 420 420" role="img" aria-label="Illustration of a television with tools, representing KSK Electronics repair work">
+        <rect x="10" y="10" width="400" height="400" rx="20" fill="#F6F7FA"/>
+        <rect x="60" y="90" width="300" height="180" rx="12" fill="#0C1B3A"/>
+        <rect x="80" y="110" width="260" height="140" rx="4" fill="#132A54"/>
+        <path d="M100 220l40-40 30 30 40-50 60 60" stroke="#FFB800" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="185" y="270" width="50" height="14" rx="4" fill="#0C1B3A"/>
+        <rect x="150" y="284" width="120" height="10" rx="5" fill="#0C1B3A"/>
+        <circle cx="330" cy="330" r="46" fill="#E4453A"/>
+        <path d="M312 330l12 12 24-24" stroke="#fff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="46" y="330" width="90" height="16" rx="8" fill="#FFB800" transform="rotate(-18 46 330)"/>
+        <circle cx="60" cy="340" r="10" fill="#132A54"/>
+      </svg>
+      <div class="about-badge"><b>13+</b><span>Years in<br>Madurai</span></div>
+    </div>
+    <div class="about-copy">
+      <span class="eyebrow">About KSK Electronics</span>
+      <h2>Madurai's trusted name for <em>TV repair</em>, since 2013</h2>
+      <div class="owner-tag">
+        <div class="owner-avatar">KS</div>
+        <div>
+          <b>K. Shiva Kumar</b>
+          <span>Owner &amp; Service Technician</span>
+        </div>
+      </div>
+      <p><strong>KSK Electronics</strong> has been repairing televisions in K Pudhur, Madurai for over 13 years, earning a 4.8-star rating across 17 customer reviews. What started as a small neighbourhood repair counter has grown into a full-service TV repair shop trusted across greater Madurai — without losing the personal, straight-talking approach that built it.</p>
+      <p>We specialise in <strong>Philips TV repair</strong> alongside every other major brand — Plasma, LCD, LED, HDTV, and rear-projection sets. Whether it's a minor glitch or a major chip-level fault, our technicians diagnose the real problem before recommending a fix, and explain it in plain terms before any work starts.</p>
+      <div class="about-points">
+        <div class="about-point"><div class="tick"><svg><use href="#ic-check"/></svg></div><div><b>In-shop &amp; home service</b><span>Bring it in, or we come to you</span></div></div>
+        <div class="about-point"><div class="tick"><svg><use href="#ic-check"/></svg></div><div><b>Certified technicians</b><span>Trained and background-checked</span></div></div>
+        <div class="about-point"><div class="tick"><svg><use href="#ic-check"/></svg></div><div><b>No hidden charges</b><span>Cost agreed before repair begins</span></div></div>
+        <div class="about-point"><div class="tick"><svg><use href="#ic-check"/></svg></div><div><b>Open every day</b><span>10:00 AM – 9:00 PM, all week</span></div></div>
+      </div>
+      <a href="#contact" class="btn btn-navy">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="shop-photo-sec" id="shop">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Visit Our Shop</span>
+      <h2>KSK Electronics – <em>Our Shop &amp; Gallery</em></h2>
+      <p>Take a look inside our TV repair setup and service counter in K. Pudur, Madurai.</p>
+    </div>
+    <div class="shop-gallery-grid">
+      <!-- Photo 1: Shop Store Front -->
+      <div class="shop-img-card reveal">
+        <img src="img1.avif" alt="KSK Electronics – Shop Front" loading="lazy">
+        <div class="shop-card-caption">
+          <b>Shop Front &amp; Entrance</b>
+          <span>K. Pudur, Madurai</span>
+        </div>
+      </div>
+      <!-- Photo 2: TV Repair Bench -->
+      <div class="shop-img-card reveal">
+        <img src="img2.avif" alt="KSK Electronics – Repair Workstation" loading="lazy">
+        <div class="shop-card-caption">
+          <b>TV Repair Workstation</b>
+          <span>Precision Component Service</span>
+        </div>
+      </div>
+      <!-- Photo 3: Diagnostic Counter -->
+      <div class="shop-img-card reveal">
+        <img src="img3.jpg" alt="KSK Electronics – Diagnostic Counter" loading="lazy">
+        <div class="shop-card-caption">
+          <b>Diagnostic &amp; Testing Counter</b>
+          <span>Advanced Panel Troubleshooting</span>
+        </div>
+      </div>
+      <!-- Photo 4: Service Desk -->
+      <div class="shop-img-card reveal">
+        <img src="img4.avif" alt="KSK Electronics – Service Counter" loading="lazy">
+        <div class="shop-card-caption">
+          <b>Service &amp; Customer Counter</b>
+          <span>In-Shop Customer Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="hero-dots"></div>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" style="color:var(--amber)">Why Choose Us</span>
+      <h2>Thirteen years of habits that <em style="color:var(--amber)">earned trust</em></h2>
+      <p>The details customers mention most, straight from our reviews and our own service policy.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon"><svg><use href="#ic-badge"/></svg></div><h4>Careful diagnosis</h4><p>Every repair starts with identifying the real fault, not guessing at parts to swap.</p></div>
+      <div class="why-card reveal"><div class="why-icon"><svg><use href="#ic-rupee"/></svg></div><h4>Transparent pricing</h4><p>You'll know the cost of the fix before we start, and there's nothing added afterward.</p></div>
+      <div class="why-card reveal"><div class="why-icon"><svg><use href="#ic-home"/></svg></div><h4>Home &amp; in-shop service</h4><p>Can't move the TV? A technician comes to you, anywhere in greater Madurai.</p></div>
+      <div class="why-card reveal"><div class="why-icon"><svg><use href="#ic-medal"/></svg></div><h4>Verified technicians</h4><p>Background-checked staff trained on both legacy and current TV technology.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="brands" id="brands">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Coverage</span>
+      <h2>All Brands, <em>Every</em> Screen Type</h2>
+      <p>If it plugs into a wall, our technicians have opened one up.</p>
+    </div>
+    <div class="brands-scroll-wrap">
+      <div class="brands-track" id="brandsTrack"></div>
+    </div>
+    <div class="brands-nav">
+      <button id="brandPrev" aria-label="Scroll brands left"><svg class="bn-flip"><use href="#ic-arrow"/></svg></button>
+      <span class="brands-hint">Drag or use the arrows to see more brands</span>
+      <button id="brandNext" aria-label="Scroll brands right"><svg><use href="#ic-arrow"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Reviews &amp; Feedback</span>
+      <h2>What <em>Madurai</em> Customers Say</h2>
+      <p>Had a TV repair job done by KSK Electronics? We'd love to hear your feedback!</p>
+    </div>
+    <div class="rev-top" style="justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div class="rev-score"><b>4.8</b><span>Overall Rating</span></div>
+        <div>
+          <span class="rev-stars">★★★★★</span>
+          <div style="font-size:13px;color:var(--mute);margin-top:4px;" id="revCountText">Based on 17 verified ratings</div>
+        </div>
+      </div>
+      <button class="btn btn-amber" id="openReviewModalBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        Write a Review for Your Job
+      </button>
+    </div>
+    <div class="rev-grid" id="revGrid">
+      <div class="rev-card reveal"><span class="rev-stars">★★★★★</span><p>Technician diagnosed a backlight issue on my LED TV within minutes and explained the fix clearly before starting. No surprises on the bill.</p><span class="who">Arun Kumar · LED TV Repair</span></div>
+      <div class="rev-card reveal"><span class="rev-stars">★★★★★</span><p>Called for a home visit after my Philips TV wouldn't power on. Technician arrived the same day and had it running again.</p><span class="who">Priya S · Home Service</span></div>
+      <div class="rev-card reveal"><span class="rev-stars">★★★★☆</span><p>Screen had lines running through it — turned out to be a loose panel connection. Fixed on the spot, fair and honest pricing.</p><span class="who">Mohamed Rafi · Screen Lines Issue</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="info-card">
+      <h3>Get in Touch</h3>
+      <div class="info-row"><div class="ic"><svg><use href="#ic-map"/></svg></div><div><b>Visit the shop</b><span>No. 31, Singaravelar Street, Madha Kovil Main Road (Near Johnbosco School), K. Pudur, Madurai, Tamil Nadu 625007</span></div></div>
+      <div class="info-row"><div class="ic"><svg><use href="#ic-phone"/></svg></div><div><b>Call or WhatsApp</b><span>+91 9944975893</span></div></div>
+      <div class="info-row"><div class="ic"><svg><use href="#ic-home"/></svg></div><div><b>Home service</b><span>Available across greater Madurai</span></div></div>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
+        <div class="hours-mini"><span>Mon – Sun</span><b>10:00 AM – 9:00 PM</b></div>
+      </div>
+      <a href="https://wa.me/919944975893?text=Hi%20KSK%20Electronics%2C%20I%20have%20an%20enquiry%20regarding%20TV%20repair" target="_blank" rel="noopener noreferrer" class="btn btn-amber" style="width:100%;margin-top:20px;"><svg><use href="#ic-wa"/></svg>Chat on WhatsApp</a>
+    </div>
+    <div class="form-card" id="formCard">
+      <h3>Enquire About a Repair</h3>
+      <p>Tell us what's wrong — no charges to ask, we'll call to confirm a slot and quote.</p>
+      <form id="enquireForm">
+        <div class="field-row">
+          <div class="field"><label for="name">Your name</label><input id="name" type="text" placeholder="e.g. Arun Kumar" required></div>
+          <div class="field"><label for="phone">Phone number</label><input id="phone" type="tel" placeholder="10-digit mobile number" required></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="issue">What's the issue</label>
+            <select id="issue">
+              <option>Screen flickering</option>
+              <option>No power / won't turn on</option>
+              <option>No picture / half screen</option>
+              <option>Lines or spots on screen</option>
+              <option>Remote or connectivity issue</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field"><label for="mode">Preferred service</label>
+            <select id="mode"><option>Home visit</option><option>Bring to shop</option></select>
+          </div>
+        </div>
+        <div class="field"><label for="notes">Notes (optional)</label><textarea id="notes" placeholder="TV brand, screen size, anything else useful"></textarea></div>
+        <button type="submit" class="btn btn-navy" style="width:100%;margin-top:6px;">Send Enquiry</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="ic"><svg><use href="#ic-check"/></svg></div>
+        <h4>Enquiry Form Submitted!</h4>
+        <p>Your enquiry message has been prepared for mobile number <b>+91 9944975893</b>.</p>
+        <p style="font-size:12.5px;color:#C98F00;margin-top:6px;font-weight:600;">
+          📌 Please tap Send in WhatsApp or Messaging app to deliver your message.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:18px;">
+          <a id="sendWaBtn" target="_blank" rel="noopener noreferrer" href="#" class="btn btn-amber" style="width:100%;justify-content:center;">
+            <svg><use href="#ic-wa"/></svg>
+            Send via WhatsApp (Instant Transmission)
+          </a>
+          <a id="sendSmsBtn" href="#" class="btn btn-navy" style="width:100%;justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Send via Phone Message (SMS - Mobile Only)
+          </a>
+          <button id="copyMsgBtn" type="button" class="btn btn-outline-navy" style="width:100%;justify-content:center;">
+            📋 Copy Message Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="location-sec" id="location">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Find Us</span>
+      <h2>Our <em>Location</em></h2>
+    </div>
+    <div class="loc-card reveal">
+      <div class="loc-info">
+        <h3>KSK Electronics</h3>
+        <span class="loc-owner">K. Shiva Kumar – Owner &amp; Service Technician</span>
+        <p class="loc-address">
+          <strong>Address:</strong><br>
+          No. 31, Singaravelar Street, Madha Kovil Main Road (Near Johnbosco School), K. Pudur, Madurai, Tamil Nadu 625007
+        </p>
+        <a href="https://www.google.com/maps/search/?api=1&query=No.+31,+Singaravelar+Street,+Madha+Kovil+Main+Road+(Near+Johnbosco+School),+K.+Pudur,+Madurai,+Tamil+Nadu+625007" target="_blank" rel="noopener noreferrer" class="btn btn-amber">
+          <svg><use href="#ic-map"/></svg> Get Directions
+        </a>
+      </div>
+      <div class="loc-map-frame">
+        <iframe title="KSK Electronics Location Map" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=No.%2031%2C%20Singaravelar%20Street%2C%20Madha%20Kovil%20Main%20Road%20%28Near%20Johnbosco%20School%29%2C%20K.%20Pudur%2C%20Madurai%2C%20Tamil%20Nadu%20625007&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand">
+          <div class="brand-badge"><img src="ksk-logo.png" alt="KSK Electronics logo"></div>
+          <span class="brand-text"><b style="color:#fff">KSK <em>ELECTRONICS</em></b><span style="color:#8891AA">TV Repair &amp; Home Service</span></span>
+        </div>
+        <p>Trusted TV repair and home service in K Pudhur, Madurai since 2013. Transparent pricing, certified technicians, every major brand.</p>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <div class="fl"><a href="#about">About Us</a><a href="#why">Why Choose Us</a><a href="#reviews">Reviews</a><a href="#contact">Contact Us</a><a href="/admin.html">Admin Dashboard</a></div>
+      </div>
+
+      <div>
+        <h5>Services</h5>
+        <div class="fl"><a href="#services">Screen &amp; Display</a><a href="#services">Power &amp; Connectivity</a><a href="#services">Chip Level Repair</a><a href="#services">Home Visit Service</a></div>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <div class="fl">
+          <a href="#contact">No. 31, Singaravelar Street (Singaravelan Street), Mathakoil Main Road, K. Pudur, Madurai - 625007</a>
+          <a href="tel:+919944975893">+91 9944975893 (Call / SMS)</a>
+          <a href="https://wa.me/919944975893?text=Hi%20KSK%20Electronics%2C%20I%20have%20an%20enquiry%20regarding%20TV%20repair" target="_blank" rel="noopener noreferrer">WhatsApp for quick reply</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>4.8 / 5 from 17 ratings · No. 31, Singaravelar Street, Madha Kovil Main Road (Near Johnbosco School), K. Pudur, Madurai, Tamil Nadu 625007</span>
+      <span>KSK Electronics · Est. 2013</span>
+    </div>
+  </div>
+</footer>
+
+<div class="floating-actions">
+  <button class="fab fab-top" id="backToTop" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+  <a class="fab fab-wa" href="https://wa.me/919944975893?text=Hi%20KSK%20Electronics%2C%20I%20have%20an%20enquiry%20regarding%20TV%20repair" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg><use href="#ic-wa"/></svg>
+  </a>
+</div>
+
+<div class="modal-overlay" id="reviewModal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" id="closeReviewModalBtn" aria-label="Close modal">&times;</button>
+    <div class="modal-head">
+      <div class="modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3>Review Your Repair Job</h3>
+      <p>Got a TV repair job done by KSK Electronics? Share your rating &amp; experience!</p>
+    </div>
+    <form id="reviewForm">
+      <div class="field">
+        <label for="revName">Your Name *</label>
+        <input id="revName" type="text" placeholder="e.g. Ramesh Kumar" required>
+      </div>
+      <div class="field">
+        <label>Your Rating *</label>
+        <div class="star-picker" id="starPicker">
+          <span data-val="1" class="active">★</span>
+          <span data-val="2" class="active">★</span>
+          <span data-val="3" class="active">★</span>
+          <span data-val="4" class="active">★</span>
+          <span data-val="5" class="active">★</span>
+        </div>
+        <input type="hidden" id="revRatingVal" value="5">
+      </div>
+      <div class="field">
+        <label for="revText">Your Review Comments *</label>
+        <textarea id="revText" placeholder="Tell us about the repair job done, technician work quality, punctuality, etc." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-amber" style="width:100%;justify-content:center;margin-top:8px;">Submit Review</button>
+    </form>
+    <div class="form-success" id="reviewSuccess" style="display:none;">
+      <div class="ic"><svg><use href="#ic-check"/></svg></div>
+      <h4>Review Submitted!</h4>
+      <p>Thank you! Your feedback for your repair job has been posted live on our website.</p>
+      <button type="button" class="btn btn-navy" id="closeSuccessBtn" style="margin-top:16px;width:100%;justify-content:center;">Close</button>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  const services = [
+    {icon:'ic-power', title:'TV Not Turning On'},
+    {icon:'ic-picture', title:'No Display / Picture Problem'},
+    {icon:'ic-flicker', title:'Screen Flickering Issue'},
+    {icon:'ic-lines', title:'Screen Lines Issue'},
+    {icon:'ic-wifi', title:'No Signal / Wi-Fi Problem'},
+    {icon:'ic-hdmi', title:'HDMI / USB Problem'},
+    {icon:'ic-remote', title:'Remote Control Issue'},
+    {icon:'ic-backlight', title:'Backlight Bleeding'},
+    {icon:'ic-half', title:'Half Screen Issue'},
+    {icon:'ic-net', title:'Internet Connectivity'},
+    {icon:'ic-blur', title:'Blur Screen Issue'},
+    {icon:'ic-chip', title:'Chip Level Repair'},
+    {icon:'ic-software', title:'Software &amp; Firmware'},
+    {icon:'ic-glass', title:'Toughened Glass Install'},
+    {icon:'ic-spot', title:'White / Black Spot Issue'},
+    {icon:'ic-home', title:'Home Visit Service'},
+  ];
+  const grid = document.getElementById('svcGrid');
+  const renderServices = (list, skipReveal)=>{
+    grid.innerHTML = list.map(s=>`
+      <div class="svc-card${skipReveal ? '' : ' reveal'}">
+        <div class="svc-icon"><svg><use href="#${s.icon}"/></svg></div>
+        <h3>${s.title}</h3>
+        <span class="svc-enquire">Enquire <svg><use href="#ic-arrow"/></svg></span>
+      </div>
+    `).join('');
+    grid.querySelectorAll('.svc-card').forEach(el=>{
+      el.addEventListener('click', ()=>{ document.getElementById('contact').scrollIntoView({behavior:'smooth'}); });
+    });
+  };
+  renderServices(services, false); // instant paint with built-in list, picked up by the reveal observer below
+  fetch('/api/services').then(r=>r.json()).then(data=>{
+    if(data.ok && data.services && data.services.length) renderServices(data.services, true); // already-visible section, no need to re-animate
+  }).catch(()=>{ /* backend offline — built-in list already shown */ });
+
+  // ===== BRANDS CAROUSEL =====
+  const brands = [
+    {name:'Samsung', color:'#1428A0'},
+    {name:'LG', color:'#A50034'},
+    {name:'Sony', color:'#000000'},
+    {name:'VU', color:'#1B1B1B'},
+    {name:'Onida', color:'#E4453A'},
+    {name:'Whirlpool', color:'#1B4F9C'},
+    {name:'Skyworth', color:'#0F6FB0'},
+    {name:'Haier', color:'#D71920'},
+    {name:'Panasonic', color:'#0F3C8C'},
+    {name:'Philips', color:'#0057A6'},
+    {name:'TCL', color:'#E4032E'},
+    {name:'Hisense', color:'#0A3D8F'},
+    {name:'MI', color:'#FF6900'},
+    {name:'Redmi', color:'#FF6900'},
+    {name:'OnePlus', color:'#EB0029'},
+    {name:'Realme', color:'#FFC90E', dark:true},
+    {name:'Lloyd', color:'#00539B'},
+    {name:'Videocon', color:'#8E1537'},
+    {name:'Sansui', color:'#004E9E'},
+    {name:'Toshiba', color:'#E4002B'},
+    {name:'Sharp', color:'#E4002B'},
+    {name:'JVC', color:'#B5121B'},
+    {name:'Acer', color:'#83B81A'},
+    {name:'Motorola', color:'#5A2D82'},
+    {name:'Nokia', color:'#124191'},
+    {name:'Blaupunkt', color:'#1B1B1B'},
+    {name:'Thomson', color:'#003DA5'},
+  ];
+  const brandsTrack = document.getElementById('brandsTrack');
+  if(brandsTrack){
+    brandsTrack.innerHTML = brands.map(b=>`
+      <div class="brand-logo-card reveal"><b style="color:${b.color}">${b.name}</b></div>
+    `).join('');
+
+    const prevBtn = document.getElementById('brandPrev');
+    const nextBtn = document.getElementById('brandNext');
+    const scrollAmount = 380;
+    let autoTimer;
+
+    const scrollBrands = (dir)=>{
+      const max = brandsTrack.scrollWidth - brandsTrack.clientWidth;
+      let target = brandsTrack.scrollLeft + dir * scrollAmount;
+      if(target < 0) target = max;
+      if(target > max) target = 0;
+      brandsTrack.scrollTo({left: target, behavior:'smooth'});
+    };
+    nextBtn && nextBtn.addEventListener('click', ()=> scrollBrands(1));
+    prevBtn && prevBtn.addEventListener('click', ()=> scrollBrands(-1));
+
+    const startAuto = ()=>{
+      autoTimer = setInterval(()=>{
+        const max = brandsTrack.scrollWidth - brandsTrack.clientWidth;
+        if(brandsTrack.scrollLeft >= max - 4){
+          brandsTrack.scrollTo({left:0, behavior:'smooth'});
+        } else {
+          brandsTrack.scrollBy({left: 180, behavior:'smooth'});
+        }
+      }, 2800);
+    };
+    const stopAuto = ()=> clearInterval(autoTimer);
+    startAuto();
+    brandsTrack.addEventListener('mouseenter', stopAuto);
+    brandsTrack.addEventListener('mouseleave', startAuto);
+    brandsTrack.addEventListener('touchstart', stopAuto, {passive:true});
+  }
+
+  // ===== SCROLL REVEAL =====
+  const revealObserver = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=> revealObserver.observe(el));
+
+  // ===== FLOATING BACK-TO-TOP =====
+  const backToTop = document.getElementById('backToTop');
+  if(backToTop){
+    window.addEventListener('scroll', ()=>{
+      backToTop.classList.toggle('show', window.scrollY > 420);
+    });
+    backToTop.addEventListener('click', ()=>{
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  }
+
+  const form = document.getElementById('enquireForm');
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const issue = document.getElementById('issue').value;
+    const mode = document.getElementById('mode').value;
+    const notes = document.getElementById('notes').value.trim();
+
+    const recipientMobile = '919944975893';
+
+    // Format default message for mobile phone notification
+    const msgText = `NEW TV REPAIR ENQUIRY - KSK ELECTRONICS\n\n` +
+      `Customer Name: ${name}\n` +
+      `Phone: ${phone}\n` +
+      `Issue: ${issue}\n` +
+      `Service Mode: ${mode}` +
+      (notes ? `\nNotes: ${notes}` : '');
+
+    // Save the enquiry to the KSK Electronics database (fire-and-forget — the
+    // WhatsApp/SMS flow below still works even if the backend is offline)
+    fetch('/api/enquiries', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, issue, mode, notes })
+    }).catch(()=>{ /* backend offline — enquiry still goes out via WhatsApp/SMS */ });
+
+    const encodedText = encodeURIComponent(msgText);
+    
+    // Check if device is iOS (iPhone/iPad) which requires '&' instead of '?' for body parameter
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    const smsDelimiter = isIOS ? '&' : '?';
+
+    const smsUrl = `sms:+${recipientMobile}${smsDelimiter}body=${encodedText}`;
+    const waUrl = `https://wa.me/${recipientMobile}?text=${encodedText}`;
+
+    const smsBtn = document.getElementById('sendSmsBtn');
+    const waBtn = document.getElementById('sendWaBtn');
+    const copyBtn = document.getElementById('copyMsgBtn');
+
+    if (smsBtn) smsBtn.href = smsUrl;
+    if (waBtn) waBtn.href = waUrl;
+
+    if (copyBtn) {
+      copyBtn.onclick = () => {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(msgText).then(() => {
+            copyBtn.textContent = '✓ Message Copied!';
+            setTimeout(() => { copyBtn.textContent = '📋 Copy Message Details'; }, 3000);
+          }).catch(() => { alert(msgText); });
+        } else {
+          alert(msgText);
+        }
+      };
+    }
+
+    // Automatically open WhatsApp in a new tab for immediate transmission across Mobile & Desktop
+    window.open(waUrl, '_blank');
+
+    // On mobile devices, also trigger native SMS app launch
+    if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+      setTimeout(() => {
+        try { window.location.href = smsUrl; } catch (err) {}
+      }, 500);
+    }
+
+    form.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  });
+
+  // ===== REVIEWS SYSTEM =====
+  const revModal = document.getElementById('reviewModal');
+  const openRevBtn = document.getElementById('openReviewModalBtn');
+  const closeRevBtn = document.getElementById('closeReviewModalBtn');
+  const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+  const revForm = document.getElementById('reviewForm');
+  const revSuccess = document.getElementById('reviewSuccess');
+  const starPicker = document.getElementById('starPicker');
+  const revRatingVal = document.getElementById('revRatingVal');
+  const revGrid = document.getElementById('revGrid');
+  const revCountText = document.getElementById('revCountText');
+
+  const openReviewModal = () => {
+    if (revModal) {
+      revModal.classList.add('active');
+      revModal.setAttribute('aria-hidden', 'false');
+    }
+  };
+
+  const closeReviewModal = () => {
+    if (revModal) {
+      revModal.classList.remove('active');
+      revModal.setAttribute('aria-hidden', 'true');
+      if (revForm) revForm.style.display = 'block';
+      if (revSuccess) revSuccess.style.display = 'none';
+      if (revForm) revForm.reset();
+      updateStarPicker(5);
+    }
+  };
+
+  if (openRevBtn) openRevBtn.addEventListener('click', openReviewModal);
+  if (closeRevBtn) closeRevBtn.addEventListener('click', closeReviewModal);
+  if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', closeReviewModal);
+
+  if (starPicker) {
+    const stars = starPicker.querySelectorAll('span');
+    stars.forEach(star => {
+      star.addEventListener('click', () => {
+        const val = parseInt(star.getAttribute('data-val'));
+        updateStarPicker(val);
+      });
+      star.addEventListener('mouseenter', () => {
+        const val = parseInt(star.getAttribute('data-val'));
+        highlightStars(val);
+      });
+    });
+    starPicker.addEventListener('mouseleave', () => {
+      highlightStars(parseInt(revRatingVal.value || '5'));
+    });
+  }
+
+  function highlightStars(val) {
+    if (!starPicker) return;
+    const stars = starPicker.querySelectorAll('span');
+    stars.forEach((s, idx) => {
+      s.classList.toggle('active', idx < val);
+    });
+  }
+
+  function updateStarPicker(val) {
+    if (revRatingVal) revRatingVal.value = val;
+    highlightStars(val);
+  }
+
+  const renderStars = (rating) => {
+    let str = '';
+    const r = Math.round(Number(rating) || 5);
+    for (let i = 1; i <= 5; i++) {
+      str += i <= r ? '★' : '☆';
+    }
+    return str;
+  };
+
+  let loadedReviewsCount = 17;
+
+  const renderReviewsList = (reviews) => {
+    if (!revGrid || !reviews || !reviews.length) return;
+    loadedReviewsCount = Math.max(17, reviews.length);
+    if (revCountText) revCountText.textContent = `Based on ${loadedReviewsCount} verified customer ratings`;
+
+    revGrid.innerHTML = reviews.map(r => `
+      <div class="rev-card reveal in-view">
+        <span class="rev-stars">${renderStars(r.rating || 5)}</span>
+        <p>${r.text}</p>
+        <span class="who">${r.name}${r.isNew ? ' <span class="rev-badge">NEW</span>' : ''}</span>
+      </div>
+    `).join('');
+  };
+
+  // Fetch reviews from API on load
+  fetch('/api/reviews')
+    .then(res => res.json())
+    .then(data => {
+      if (data.ok && data.reviews && data.reviews.length) {
+        renderReviewsList(data.reviews);
+      }
+    })
+    .catch(() => { /* Built-in HTML reviews remain if backend offline */ });
+
+  // Handle Review Submission
+  if (revForm) {
+    revForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('revName').value.trim();
+      const rating = parseInt(revRatingVal.value) || 5;
+      const text = document.getElementById('revText').value.trim();
+
+      if (!name || !text) return;
+
+      fetch('/api/reviews', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, rating, text })
+      })
+      .then(res => res.json())
+      .catch(err => console.warn('Offline review submission:', err.message));
+
+      // Append new review card to top of grid immediately
+      const cardHtml = `
+        <div class="rev-card reveal in-view" style="border-color:var(--amber);background:#FFFDF5;">
+          <span class="rev-stars">${renderStars(rating)}</span>
+          <p>${text}</p>
+          <span class="who">${name} <span class="rev-badge">JUST ADDED</span></span>
+        </div>
+      `;
+      if (revGrid) {
+        revGrid.insertAdjacentHTML('afterbegin', cardHtml);
+      }
+      loadedReviewsCount++;
+      if (revCountText) revCountText.textContent = `Based on ${loadedReviewsCount} verified customer ratings`;
+
+      revForm.style.display = 'none';
+      if (revSuccess) revSuccess.style.display = 'block';
+    });
+  }
+
+  const toggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('.nav-links');
+  toggle.addEventListener('click', ()=>{
+    const open = navLinks.style.display === 'flex';
+    navLinks.style.display = open ? 'none' : 'flex';
+    navLinks.style.cssText += 'position:absolute;top:88px;left:0;right:0;background:#fff;flex-direction:column;padding:10px 28px 20px;gap:4px;border-bottom:1px solid #E4E7EE;box-shadow:0 12px 20px rgba(12,27,58,.08);';
+  });
+</script>
+
+</body>
+</html>

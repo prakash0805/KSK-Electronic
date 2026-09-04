@@ -1,0 +1,114 @@
+[
+  {
+    "icon": "ic-power",
+    "title": "TV Not Turning On",
+    "_id": "1",
+    "order": 0,
+    "active": true
+  },
+  {
+    "icon": "ic-picture",
+    "title": "No Display / Picture Problem",
+    "_id": "2",
+    "order": 1,
+    "active": true
+  },
+  {
+    "icon": "ic-flicker",
+    "title": "Screen Flickering Issue",
+    "_id": "3",
+    "order": 2,
+    "active": true
+  },
+  {
+    "icon": "ic-lines",
+    "title": "Screen Lines Issue",
+    "_id": "4",
+    "order": 3,
+    "active": true
+  },
+  {
+    "icon": "ic-wifi",
+    "title": "No Signal / Wi-Fi Problem",
+    "_id": "5",
+    "order": 4,
+    "active": true
+  },
+  {
+    "icon": "ic-hdmi",
+    "title": "HDMI / USB Problem",
+    "_id": "6",
+    "order": 5,
+    "active": true
+  },
+  {
+    "icon": "ic-remote",
+    "title": "Remote Control Issue",
+    "_id": "7",
+    "order": 6,
+    "active": true
+  },
+  {
+    "icon": "ic-backlight",
+    "title": "Backlight Bleeding",
+    "_id": "8",
+    "order": 7,
+    "active": true
+  },
+  {
+    "icon": "ic-half",
+    "title": "Half Screen Issue",
+    "_id": "9",
+    "order": 8,
+    "active": true
+  },
+  {
+    "icon": "ic-net",
+    "title": "Internet Connectivity",
+    "_id": "10",
+    "order": 9,
+    "active": true
+  },
+  {
+    "icon": "ic-blur",
+    "title": "Blur Screen Issue",
+    "_id": "11",
+    "order": 10,
+    "active": true
+  },
+  {
+    "icon": "ic-chip",
+    "title": "Chip Level Repair",
+    "_id": "12",
+    "order": 11,
+    "active": true
+  },
+  {
+    "icon": "ic-software",
+    "title": "Software & Firmware",
+    "_id": "13",
+    "order": 12,
+    "active": true
+  },
+  {
+    "icon": "ic-glass",
+    "title": "Toughened Glass Install",
+    "_id": "14",
+    "order": 13,
+    "active": true
+  },
+  {
+    "icon": "ic-spot",
+    "title": "White / Black Spot Issue",
+    "_id": "15",
+    "order": 14,
+    "active": true
+  },
+  {
+    "icon": "ic-home",
+    "title": "Home Visit Service",
+    "_id": "16",
+    "order": 15,
+    "active": true
+  }
+]

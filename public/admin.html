@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSK Electronics — Admin Enquiry Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0C1B3A;
+    --navy-2:#132A54;
+    --navy-3:#1B3568;
+    --amber:#FFB800;
+    --amber-dim:#C98F00;
+    --red:#E4453A;
+    --red-dim:#C8362C;
+    --green:#2FD06E;
+    --ink:#14213D;
+    --mute:#5B6478;
+    --line:#E4E7EE;
+    --bg:#F6F7FA;
+    --white:#FFFFFF;
+    --radius:12px;
+    --display:'Sora',sans-serif;
+    --body:'Inter',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.5;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+
+  /* ===== LOGIN OVERLAY ===== */
+  .login-screen{
+    position:fixed;inset:0;background:rgba(12,27,58,0.92);backdrop-filter:blur(8px);
+    z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;
+  }
+  .login-card{
+    background:var(--white);border-radius:16px;width:100%;max-width:420px;
+    padding:36px 32px;box-shadow:0 24px 48px rgba(0,0,0,0.3);text-align:center;
+  }
+  .login-icon{
+    width:64px;height:64px;background:#FFF6D6;border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .login-icon svg{width:32px;height:32px;stroke:var(--amber-dim);}
+  .login-card h2{font-family:var(--display);font-weight:800;font-size:22px;color:var(--navy);margin-bottom:6px;}
+  .login-card p{font-size:13.5px;color:var(--mute);margin-bottom:24px;}
+  .login-field{margin-bottom:20px;text-align:left;}
+  .login-field label{display:block;font-size:12px;font-weight:700;color:var(--navy);text-transform:uppercase;margin-bottom:6px;}
+  .login-field input{
+    width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;
+    font-size:15px;font-weight:600;outline:none;transition:border-color .15s;
+  }
+  .login-field input:focus{border-color:var(--amber);}
+  .login-btn{
+    width:100%;padding:13px;border-radius:8px;background:var(--navy);color:var(--white);
+    font-family:var(--display);font-weight:700;font-size:14px;border:none;cursor:pointer;
+    transition:background .15s;display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .login-btn:hover{background:#173169;}
+  .login-err{
+    margin-top:14px;padding:10px 14px;background:#FDE6E4;border:1px solid #F9B8B3;
+    color:var(--red);border-radius:7px;font-size:13px;font-weight:600;display:none;
+  }
+
+  /* ===== MAIN NAV HEADER ===== */
+  header.mainnav{background:var(--white);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:60;}
+  .navrow{display:flex;align-items:center;justify-content:space-between;height:80px;max-width:1240px;margin:0 auto;padding:0 24px;gap:16px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand-badge{
+    width:48px;height:48px;border-radius:10px;background:var(--white);
+    border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;overflow:hidden;
+  }
+  .brand-badge img{width:100%;height:100%;object-fit:cover;}
+  .brand-text b{font-family:var(--display);font-weight:800;font-size:19px;color:var(--navy);line-height:1.1;}
+  .brand-text b em{font-style:normal;color:var(--red);}
+  .brand-text span{display:block;font-size:10px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase;font-weight:600;margin-top:2px;}
+  
+  .nav-right{display:flex;align-items:center;gap:10px;}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:10px 18px;border-radius:7px;font-weight:700;font-size:13px;
+    cursor:pointer;border:1.5px solid transparent;transition:all .15s ease;white-space:nowrap;
+  }
+  .btn-amber{background:var(--amber);color:#2B1B00;}
+  .btn-amber:hover{background:#FFC733;}
+  .btn-navy{background:var(--navy);color:var(--white);}
+  .btn-navy:hover{background:#173169;}
+  .btn-outline-navy{background:transparent;border-color:var(--navy);color:var(--navy);}
+  .btn-outline-navy:hover{background:var(--navy);color:var(--white);}
+  .btn-del{background:var(--red);color:#fff;padding:6px 12px;border-radius:6px;font-weight:700;font-size:12px;cursor:pointer;border:none;transition:background .15s;}
+  .btn-del:hover{background:var(--red-dim);}
+
+  /* ===== MAIN CONTAINER ===== */
+  .wrap{max-width:1240px;margin:0 auto;padding:32px 24px 60px;}
+  .dash-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:28px;flex-wrap:wrap;gap:16px;}
+  .dash-head h1{font-family:var(--display);font-weight:800;font-size:26px;color:var(--navy);}
+  .dash-head p{color:var(--mute);font-size:14px;margin-top:4px;}
+
+  /* Stats Grid */
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:32px;}
+  .stat-card{
+    background:var(--white);border:1.5px solid var(--line);border-radius:var(--radius);
+    padding:22px;box-shadow:0 6px 16px rgba(12,27,58,.04);
+  }
+  .stat-card .sc-label{font-size:12px;font-weight:700;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;}
+  .stat-card .sc-val{font-family:var(--display);font-size:32px;font-weight:800;color:var(--navy);margin-top:6px;}
+  .stat-card.sc-amber .sc-val{color:var(--amber-dim);}
+  .stat-card.sc-green .sc-val{color:var(--green);}
+  .stat-card.sc-red .sc-val{color:var(--red);}
+
+  /* Controls Bar */
+  .controls-bar{
+    background:var(--white);border:1.5px solid var(--line);border-radius:12px;
+    padding:16px 20px;display:flex;justify-content:space-between;align-items:center;
+    margin-bottom:22px;flex-wrap:wrap;gap:14px;
+  }
+  .search-wrap{position:relative;flex:1;max-width:320px;}
+  .search-wrap input{
+    width:100%;padding:9px 12px 9px 36px;border:1.5px solid var(--line);border-radius:7px;
+    font-size:13px;background:var(--bg);outline:none;
+  }
+  .search-wrap input:focus{border-color:var(--amber);}
+  .search-wrap svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--mute);}
+  .filter-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+  .tab-btn{
+    padding:7px 14px;border-radius:6px;font-size:12.5px;font-weight:700;
+    border:1px solid var(--line);background:var(--bg);color:var(--mute);cursor:pointer;transition:all .15s;
+  }
+  .tab-btn.active{background:var(--navy);color:var(--white);border-color:var(--navy);}
+
+  /* Table */
+  .table-card{
+    background:var(--white);border:1.5px solid var(--line);border-radius:16px;
+    overflow:hidden;box-shadow:0 10px 28px rgba(12,27,58,.05);
+  }
+  table.admin-tbl{width:100%;border-collapse:collapse;}
+  table.admin-tbl th{
+    background:var(--navy);color:var(--white);font-family:var(--display);
+    font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+    padding:14px 18px;text-align:left;
+  }
+  table.admin-tbl td{
+    padding:14px 18px;font-size:13.5px;border-bottom:1px solid var(--line);
+    vertical-align:middle;color:var(--ink);
+  }
+  table.admin-tbl tr:last-child td{border-bottom:none;}
+  table.admin-tbl tr:hover td{background:var(--bg);}
+  .status-select{
+    font-size:12px;font-weight:700;padding:5px 10px;border-radius:20px;
+    border:1.5px solid var(--line);background:var(--white);cursor:pointer;outline:none;
+  }
+  .status-New{background:#FFF6D6;color:#8A5B00;border-color:#FFE699;}
+  .status-Contacted{background:#E0EEFF;color:#0F4C9C;border-color:#B8D9FF;}
+  .status-Scheduled{background:#F0E6FF;color:#5B2D9C;border-color:#D8BFFF;}
+  .status-Completed{background:#E2F9E8;color:#137838;border-color:#B3F0C2;}
+  .status-Cancelled{background:#FDE6E4;color:#B82318;border-color:#F9B8B3;}
+
+  .empty-state{text-align:center;padding:50px 20px;color:var(--mute);}
+  .empty-state h4{font-family:var(--display);font-size:18px;color:var(--navy);margin-bottom:6px;}
+
+  @media (max-width:900px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .table-card{overflow-x:auto;}
+  }
+  @media (max-width:600px){
+    .stats-grid{grid-template-columns:1fr;}
+    .wrap{padding:20px 14px;}
+    .navrow{height:auto;padding:12px 14px;flex-direction:column;gap:12px;}
+    .nav-right{width:100%;justify-content:space-between;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== LOGIN OVERLAY MODAL ===== -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h2>Admin Login</h2>
+    <p>Enter your secret Admin Key to access the enquiry dashboard.</p>
+    <form onsubmit="handleLogin(event)">
+      <div class="login-field">
+        <label for="adminPassword">Admin Password</label>
+        <input id="adminPassword" type="password" placeholder="Enter Admin Password" required autofocus autocomplete="current-password">
+      </div>
+      <button type="submit" class="login-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Unlock Dashboard
+      </button>
+      <div id="loginError" class="login-err">Invalid Password. Please try again.</div>
+    </form>
+  </div>
+</div>
+
+<header class="mainnav">
+  <div class="navrow">
+    <div class="brand">
+      <div class="brand-badge"><img src="ksk-logo.png" alt="KSK Electronics logo"></div>
+      <span class="brand-text"><b>KSK <em>ELECTRONICS</em></b><span>TV Repair &amp; Admin Dashboard</span></span>
+    </div>
+    <div class="nav-right">
+      <button class="btn btn-amber" onclick="handleLogout()" style="padding:7px 14px;font-size:12px;">Logout</button>
+      <a href="/" class="btn btn-navy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back to Website
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="dash-head">
+    <div>
+      <h1>Repair Enquiry Dashboard</h1>
+      <p>Manage customer TV repair bookings and enquiries submitted from the main website.</p>
+    </div>
+    <button class="btn btn-outline-navy" onclick="loadDashboard()">&orarr; Refresh Data</button>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="sc-label">Total Enquiries</div>
+      <div class="sc-val" id="statTotal">0</div>
+    </div>
+    <div class="stat-card sc-amber">
+      <div class="sc-label">New Requests</div>
+      <div class="sc-val" id="statNew">0</div>
+    </div>
+    <div class="stat-card sc-red">
+      <div class="sc-label">Scheduled / Active</div>
+      <div class="sc-val" id="statActive">0</div>
+    </div>
+    <div class="stat-card sc-green">
+      <div class="sc-label">Completed Repairs</div>
+      <div class="sc-val" id="statCompleted">0</div>
+    </div>
+  </div>
+
+  <div class="controls-bar">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input id="searchInput" type="text" placeholder="Search by customer name, phone, issue..." oninput="filterEnquiries()">
+    </div>
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="setFilter('All', this)">All</button>
+      <button class="tab-btn" onclick="setFilter('New', this)">New</button>
+      <button class="tab-btn" onclick="setFilter('Contacted', this)">Contacted</button>
+      <button class="tab-btn" onclick="setFilter('Scheduled', this)">Scheduled</button>
+      <button class="tab-btn" onclick="setFilter('Completed', this)">Completed</button>
+    </div>
+  </div>
+
+  <div class="table-card">
+    <table class="admin-tbl" id="adminTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Phone Number</th>
+          <th>Repair Issue</th>
+          <th>Service Mode</th>
+          <th>Notes</th>
+          <th>Status</th>
+          <th>Received Date</th>
+          <th style="text-align:center;">Action</th>
+        </tr>
+      </thead>
+      <tbody id="dashTbody"></tbody>
+    </table>
+    <div id="dashEmpty" class="empty-state" style="display:none;">
+      <h4>No Customer Enquiries Found</h4>
+      <p>No repair enquiries match the current search or filter criteria.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  let rawEnquiries = [];
+  let currentFilter = 'All';
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const savedKey = sessionStorage.getItem('admin_key');
+    if (savedKey) {
+      document.getElementById('adminPassword').value = savedKey;
+      loadDashboard();
+    } else {
+      document.getElementById('loginScreen').style.display = 'flex';
+    }
+  });
+
+  function getAdminKey() {
+    return document.getElementById('adminPassword').value.trim() || sessionStorage.getItem('admin_key') || '';
+  }
+
+  async function handleLogin(e) {
+    e.preventDefault();
+    await loadDashboard(true);
+  }
+
+  function handleLogout() {
+    sessionStorage.removeItem('admin_key');
+    document.getElementById('adminPassword').value = '';
+    document.getElementById('loginError').style.display = 'none';
+    document.getElementById('loginScreen').style.display = 'flex';
+  }
+
+  async function loadDashboard(fromLoginForm = false) {
+    const key = getAdminKey();
+    const loginError = document.getElementById('loginError');
+    loginError.style.display = 'none';
+
+    if (!key) {
+      document.getElementById('loginScreen').style.display = 'flex';
+      return;
+    }
+
+    try {
+      const res = await fetch('/api/enquiries', { headers: { 'x-admin-key': key } });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        sessionStorage.setItem('admin_key', key);
+        document.getElementById('loginScreen').style.display = 'none';
+        rawEnquiries = data.enquiries || [];
+        renderDashboard();
+      } else {
+        sessionStorage.removeItem('admin_key');
+        document.getElementById('loginScreen').style.display = 'flex';
+        loginError.textContent = data.error || 'Invalid Admin Password. Access Denied.';
+        loginError.style.display = 'block';
+      }
+    } catch (err) {
+      document.getElementById('loginScreen').style.display = 'flex';
+      loginError.textContent = 'Could not connect to the backend server. Ensure node server is running.';
+      loginError.style.display = 'block';
+    }
+  }
+
+  function updateStats() {
+    document.getElementById('statTotal').textContent = rawEnquiries.length;
+    document.getElementById('statNew').textContent = rawEnquiries.filter(e => e.status === 'New').length;
+    document.getElementById('statCompleted').textContent = rawEnquiries.filter(e => e.status === 'Completed').length;
+    document.getElementById('statActive').textContent = rawEnquiries.filter(e => e.status === 'Scheduled' || e.status === 'Contacted').length;
+  }
+
+  function setFilter(filter, btn) {
+    currentFilter = filter;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    renderDashboard();
+  }
+
+  function filterEnquiries() {
+    renderDashboard();
+  }
+
+  function renderDashboard() {
+    updateStats();
+    const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+
+    let filtered = rawEnquiries.filter(e => {
+      const matchesFilter = currentFilter === 'All' || e.status === currentFilter;
+      const matchesSearch = !searchVal || 
+        (e.name && e.name.toLowerCase().includes(searchVal)) ||
+        (e.phone && e.phone.toLowerCase().includes(searchVal)) ||
+        (e.issue && e.issue.toLowerCase().includes(searchVal));
+      return matchesFilter && matchesSearch;
+    });
+
+    const tbody = document.getElementById('dashTbody');
+    const table = document.getElementById('adminTable');
+    const empty = document.getElementById('dashEmpty');
+
+    if (!filtered.length) {
+      table.style.display = 'none';
+      empty.style.display = 'block';
+      return;
+    }
+
+    table.style.display = 'table';
+    empty.style.display = 'none';
+
+    tbody.innerHTML = filtered.map(e => `
+      <tr id="row-${e._id}">
+        <td><b>${e.name}</b></td>
+        <td><a href="tel:${e.phone}" style="color:var(--navy);font-weight:700;">${e.phone}</a></td>
+        <td>${e.issue}</td>
+        <td>${e.mode}</td>
+        <td>${e.notes || '—'}</td>
+        <td>
+          <select class="status-select status-${e.status}" onchange="updateStatus('${e._id}', this.value)">
+            <option value="New" ${e.status === 'New' ? 'selected' : ''}>New</option>
+            <option value="Contacted" ${e.status === 'Contacted' ? 'selected' : ''}>Contacted</option>
+            <option value="Scheduled" ${e.status === 'Scheduled' ? 'selected' : ''}>Scheduled</option>
+            <option value="Completed" ${e.status === 'Completed' ? 'selected' : ''}>Completed</option>
+            <option value="Cancelled" ${e.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+          </select>
+        </td>
+        <td>${new Date(e.createdAt).toLocaleString()}</td>
+        <td style="text-align:center;">
+          <button class="btn-del" onclick="deleteEnquiry('${e._id}', '${e.name}')">🗑 Delete</button>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  async function updateStatus(id, newStatus) {
+    const key = getAdminKey();
+    try {
+      const res = await fetch(`/api/enquiries/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'x-admin-key': key },
+        body: JSON.stringify({ status: newStatus })
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        const item = rawEnquiries.find(e => e._id === id);
+        if (item) item.status = newStatus;
+        renderDashboard();
+      } else {
+        alert(data.error || 'Failed to update status');
+        loadDashboard();
+      }
+    } catch (err) {
+      alert('Error updating status: ' + err.message);
+    }
+  }
+
+  async function deleteEnquiry(id, customerName) {
+    if (!confirm(`Are you sure you want to delete the enquiry from "${customerName}"?`)) return;
+    const key = getAdminKey();
+    try {
+      const res = await fetch(`/api/enquiries/${id}`, {
+        method: 'DELETE',
+        headers: { 'x-admin-key': key }
+      });
+      const data = await res.json();
+      if (res.ok && data.ok) {
+        rawEnquiries = rawEnquiries.filter(e => e._id !== id);
+        renderDashboard();
+      } else {
+        alert(data.error || 'Failed to delete enquiry');
+      }
+    } catch (err) {
+      alert('Error deleting enquiry: ' + err.message);
+    }
+  }
+</script>
+</body>
+</html>
