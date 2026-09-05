@@ -50,7 +50,7 @@
       "Sunday"
     ],
     "opens": "09:00",
-    "closes": "21:00"
+    "closes": "22:00"
   },
   "priceRange": "₹₹",
   "aggregateRating": {
@@ -582,7 +582,7 @@
       <a href="https://wa.me/919944975893?text=Hi%20KSK%20Electronics%2C%20I%20have%20an%20enquiry%20regarding%20TV%20repair" target="_blank" rel="noopener noreferrer" class="tlink"><svg><use href="#ic-wa"/></svg>WhatsApp Us</a>
     </div>
     <div class="topbar-right">
-      <span class="tlink" id="topbarStatusBadge"><svg><use href="#ic-clock"/></svg><span id="liveStatusDot">🟢</span> <span id="liveStatusText">Open Daily · 10:00 AM – 9:00 PM</span></span>
+      <span class="tlink" id="topbarStatusBadge"><svg><use href="#ic-clock"/></svg><span id="liveStatusDot">🟢</span> <span id="liveStatusText">Open Daily · 9:00 AM – 10:00 PM</span></span>
       <div class="soc" aria-hidden="true">
         <span><svg style="stroke:#C7CEDD"><use href="#ic-fb"/></svg></span>
         <span><svg style="stroke:#C7CEDD"><use href="#ic-ig"/></svg></span>
@@ -896,7 +896,7 @@
       <div class="info-row"><div class="ic"><svg><use href="#ic-phone"/></svg></div><div><b>Call or WhatsApp</b><span>+91 9944975893</span></div></div>
       <div class="info-row"><div class="ic"><svg><use href="#ic-home"/></svg></div><div><b>Home service</b><span>Available across greater Madurai</span></div></div>
       <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1);">
-        <div class="hours-mini" id="hoursMiniBadge"><span>Mon – Sun</span><b>10:00 AM – 9:00 PM</b></div>
+        <div class="hours-mini" id="hoursMiniBadge"><span>Mon – Sun</span><b>9:00 AM – 10:00 PM</b></div>
       </div>
       <a href="https://wa.me/919944975893?text=Hi%20KSK%20Electronics%2C%20I%20have%20an%20enquiry%20regarding%20TV%20repair" target="_blank" rel="noopener noreferrer" class="btn btn-amber" style="width:100%;margin-top:20px;"><svg><use href="#ic-wa"/></svg>Chat on WhatsApp</a>
     </div>
@@ -1332,24 +1332,24 @@
     return str;
   };
 
-  // Live Operating Hours Calculator (10:00 AM to 9:00 PM Daily)
+  // Live Operating Hours Calculator (9:00 AM to 10:00 PM Daily)
   function updateLiveOperatingHours() {
     const now = new Date();
     const currentHour = now.getHours() + (now.getMinutes() / 60);
-    const isOpen = currentHour >= 10 && currentHour < 21;
+    const isOpen = currentHour >= 9 && currentHour < 22;
 
     const topbarText = document.getElementById('liveStatusText');
     const topbarDot = document.getElementById('liveStatusDot');
     const hoursMini = document.getElementById('hoursMiniBadge');
 
     if (isOpen) {
-      if (topbarText) topbarText.textContent = 'Open Now · 10:00 AM – 9:00 PM';
+      if (topbarText) topbarText.textContent = 'Open Now · 9:00 AM – 10:00 PM';
       if (topbarDot) topbarDot.textContent = '🟢';
-      if (hoursMini) hoursMini.innerHTML = '<span style="color:#2FD06E;font-weight:700;">🟢 OPEN NOW</span> <b>10:00 AM – 9:00 PM</b>';
+      if (hoursMini) hoursMini.innerHTML = '<span style="color:#2FD06E;font-weight:700;">🟢 OPEN NOW</span> <b>9:00 AM – 10:00 PM</b>';
     } else {
-      if (topbarText) topbarText.textContent = 'Closed Now (Opens at 10:00 AM)';
+      if (topbarText) topbarText.textContent = 'Closed Now (Opens at 9:00 AM)';
       if (topbarDot) topbarDot.textContent = '🔴';
-      if (hoursMini) hoursMini.innerHTML = '<span style="color:#E4453A;font-weight:700;">🔴 CLOSED NOW</span> <b>Opens at 10:00 AM</b>';
+      if (hoursMini) hoursMini.innerHTML = '<span style="color:#E4453A;font-weight:700;">🔴 CLOSED NOW</span> <b>Opens at 9:00 AM</b>';
     }
   }
 

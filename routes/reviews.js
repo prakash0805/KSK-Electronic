@@ -62,11 +62,11 @@ router.get('/', async (req, res) => {
       googleRating: 4.8,
       totalRatings: 148,
       timing: {
-        openTime: '10:00 AM',
-        closeTime: '9:00 PM',
+        openTime: '9:00 AM',
+        closeTime: '10:00 PM',
         days: 'Monday – Sunday',
-        startHour: 10,
-        endHour: 21
+        startHour: 9,
+        endHour: 22
       },
       googleMapsUrl: 'https://www.google.com/search?q=KSK+Electronics+K+Pudhur+Madurai',
       reviews: allReviews
