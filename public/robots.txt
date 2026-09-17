@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin.html
 Disallow: /api/
 
-Sitemap: https://kskelectronics.com/sitemap.xml
+Sitemap: https://kskelectrical.in/sitemap.xml
